@@ -1,0 +1,80 @@
+/*adding css home.cs and using cs*/
+.navbar {
+    background-color: #0eacfc; /* Blue background for navbar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    background-color: #00b34e;
+    border-radius: 5px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important;
+}
+
+.navbar-toggler {
+    border-color: #fff;
+}
+
+/* Custom Button */
+.login-btn {
+    background-color: #f51414;
+    color: #00eeff;
+    border: 2px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #0dff11;
+    color: #fff;
+}
+
+/* Main Content Styling */
+h1.display-4 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ff3300;
+}
+
+p.lead {
+    font-size: 1.25rem;
+    color: #6c757d;
+}
+
+p {
+    font-size: 1rem;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #0056b3; /* Darker blue for footer */
+    color: #fff;
+    padding: 1rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2.5rem;
+    }
+
+    p.lead {
+        font-size: 1.1rem;
+    }
+
+    footer {
+        padding: 0.5rem;
+    }
+}

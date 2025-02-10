@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- ChartJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link th:href="@{/css/user.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+          <!-- Sidebar Menu -->
+<div class="col-md-3">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <i class="fas fa-bars"></i> Menu
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <a th:href="@{/settings}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/user/profile}"><i class="fas fa-user"></i> Profile</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/settings}"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/graph-view}"><i class="fas fa-chart-line"></i> Graph</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/logout}" th:method="post"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+            <!-- User Panel -->
+            <div class="col-md-9">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <i class="fas fa-user-cog"></i> User Panel
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Welcome, <i class="fas fa-user"></i> <span th:text="${#authentication.name}">[Username]</span>
+                        </h5>
+                        <p class="card-text">This is your user panel where you can manage your profile and settings.</p>
+                        <button class="btn btn-primary" id="editProfileBtn" onclick="redirectToEditProfile()">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>                        
+                    </div>
+                </div>
+             <!---- Subjects Section -->
+                <div class="mb-4">
+                    <h5 class="mb-3"><i class="fas fa-book"></i> Subjects:</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <!-- Python Programming Card -->
+                            <div class="card shadow-sm h-100">
+                                <img class="card-img-top" th:src="@{/images/PYTHON.png}" alt="Python Logo" style="width: 150px; height: 150px; margin: 1rem auto;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Python Programming</h5>
+                                    <p class="card-text">
+                                        Python is a high-level programming language used for web development, AI, and more.
+                                    </p>
+                                    <a href="https://www.python.org/" target="_blank" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <!-- Java Programming Card -->
+                            <div class="card shadow-sm h-100">
+                                <img class="card-img-top" th:src="@{/images/Java.png}" alt="Java Logo" style="width: 150px; height: 150px; margin: 1rem auto;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Java Programming</h5>
+                                    <p class="card-text">
+                                        Java is a versatile, object-oriented programming language widely used for enterprise development.
+                                    </p>
+                                    <a href="https://www.java.com/" target="_blank" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <!-- JavaScript Programming Card -->
+                            <div class="card shadow-sm h-100">
+                                <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo" style="width: 150px; height: 150px; margin: 1rem auto;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">JavaScript Programming</h5>
+                                    <p class="card-text">
+                                        JavaScript is a core technology of the web, essential for creating interactive and dynamic web content.
+                                    </p>
+                                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <!-- Data Science Card -->
+                            <div class="card shadow-sm h-100">
+                                <img class="card-img-top" th:src="@{/images/Data_science.png}" alt="Data Science Logo" style="width: 150px; height: 150px; margin: 1rem auto;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Data Science</h5>
+                                    <p class="card-text">
+                                        Data Science is the field of using scientific methods, processes, and algorithms to extract insights from data.
+                                    </p>
+                                    <a href="https://www.datascience.com/" target="_blank" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <!-- Machine Learning Card -->
+                            <div class="card shadow-sm h-100">
+                                <img class="card-img-top" th:src="@{/images/ml.png}" alt="Machine Learning Logo" style="width: 150px; height: 150px; margin: 1rem auto;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Machine Learning</h5>
+                                    <p class="card-text">
+                                        Machine Learning is a branch of AI that focuses on building systems that learn from data and improve over time.
+                                    </p>
+                                    <a href="https://www.ibm.com/cloud/learn/machine-learning" target="_blank" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <!-- Web Development Card -->
+                            <div class="card shadow-sm h-100">
+                                <img class="card-img-top" th:src="@{/images/web.png}" alt="Web Development Logo" style="width: 150px; height: 150px; margin: 1rem auto;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Web Development</h5>
+                                    <p class="card-text">
+                                        Web development involves building and maintaining websites, covering both front-end and back-end aspects.
+                                    </p>
+                                    <a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>      
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script th:src="@{/js/chart.js}"></script>
+    <script type="text/javascript">
+            function redirectToEditProfile() {
+                window.location.href = "/profile_view";
+            }    
+        </script>
+</body>
+</html>

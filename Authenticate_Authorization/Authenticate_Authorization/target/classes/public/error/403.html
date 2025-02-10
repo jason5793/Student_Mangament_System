@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 Forbidden</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="text-center">
+        <h1 class="display-1 text-danger">403</h1>
+        <p class="lead text-secondary">Forbidden - You don't have permission to access this page.</p>
+
+        <!-- Button to trigger JavaScript function for POST request -->
+        <a href="javascript:void(0);" onclick="submitPostForm();" class="btn btn-outline-primary">Home</a>
+
+        <!-- Hidden form for POST request -->
+        <form id="postForm" th:action="@{/home}" method="post" style="display: none;">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}" /> <!-- CSRF token if CSRF protection is enabled -->
+        </form>
+    </div> 
+
+    <script>
+        function submitPostForm() {
+            document.getElementById("postForm").submit();
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
